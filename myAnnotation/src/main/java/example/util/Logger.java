@@ -1,7 +1,7 @@
 package example.util;
 
 import javax.annotation.processing.Messager;
-import javax.tools.Diagnostic.Kind;
+import javax.tools.Diagnostic;
 
 public final class Logger {
 	private static Messager messager;
@@ -14,11 +14,11 @@ public final class Logger {
 	}
 
 	public static void note(final String message) {
-		messager.printMessage(Kind.NOTE, message);
+		messager.printMessage(Diagnostic.Kind.NOTE, message);
 	}
 
 	public static void error(final String message) {
-		messager.printMessage(Kind.ERROR, message);
+		messager.printMessage(Diagnostic.Kind.ERROR, message);
 	}
 
 }

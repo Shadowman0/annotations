@@ -40,6 +40,12 @@
 					<source>1.8</source>
 					<target>1.8</target>
 					<encoding>UTF-8</encoding>
+					<generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
+					<annotationProcessors>
+						<annotationProcessor>
+							example.processor.MyAnnotationProcessor
+						</annotationProcessor>
+					</annotationProcessors>
 				</configuration>
 			</plugin>
 		</plugins>

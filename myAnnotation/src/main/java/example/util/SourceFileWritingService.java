@@ -37,19 +37,20 @@ public class SourceFileWritingService {
 
 	private void createFiles(final List<AnnotatedClazz> annotatedClazzes) throws TemplateNotFoundException,
 			MalformedTemplateNameException, ParseException, IOException, TemplateException {
-		String templateName = "templates/clazz.ftl";
+		String templateName = "templates/mapper.ftl";
 		Template template = freemarkerCfg.getTemplate(templateName);
 		for (AnnotatedClazz clazz : annotatedClazzes) {
 			Map<String, Object> modelMap = new HashMap<>();
-			modelMap.put("packageName", clazz.getPackageName());
-			modelMap.put("parentClazzName", clazz.getParentClazzName());
-			for (String parameters : clazz.getParameters()) {
-				modelMap.put("parameters", parameters);
-				modelMap.put("generatedClazzName", "TestClazz");
-				JavaFileObject jfo = filer.createSourceFile(clazz.getPackageName() + "." + "TestClazz");
-				Writer writer = jfo.openWriter();
-				template.process(modelMap, writer);
-			}
+			modelMap.put("packageName", clazz.getSourcePackageName());
+			modelMap.put("sourcePackageName", clazz.getSourcePackageName());
+			modelMap.put("targetPackageName", clazz.getTargetPackageName());
+			modelMap.put("source", clazz.getSource());
+			modelMap.put("target", clazz.getTarget());
+			String generatedClazzName = clazz.getSource() + "To" + clazz.getTarget() + "Mapper";
+			modelMap.put("generatedClazzName", generatedClazzName);
+			JavaFileObject jfo = filer.createSourceFile(clazz.getSourcePackageName() + "." + generatedClazzName);
+			Writer writer = jfo.openWriter();
+			template.process(modelMap, writer);
 		}
 	}
 

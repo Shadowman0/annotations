@@ -2,28 +2,49 @@ package example.domain;
 
 public class AnnotatedClazz {
 
-	private String packageName;
+	private String sourcePackageName;
+	private String targetPackageName;
 
-	private String parentClazzName;
+	private String source;
+	private String target;
 
-	private String[] parameters;
-
-	public AnnotatedClazz(final String packageName, final String parentClazzName, final String[] parameters) {
-		this.packageName = packageName;
-		this.parentClazzName = parentClazzName;
-		this.parameters = parameters;
+	public AnnotatedClazz(String sourcePackageName, String targetPackageName, String source, String target) {
+		this.sourcePackageName = sourcePackageName;
+		this.targetPackageName = targetPackageName;
+		this.source = source;
+		this.target = target;
 	}
 
-	public String getPackageName() {
-		return packageName;
+	public String getSourcePackageName() {
+		return sourcePackageName;
 	}
 
-	public String getParentClazzName() {
-		return parentClazzName;
+	public void setSourcePackageName(String sourcePackageName) {
+		this.sourcePackageName = sourcePackageName;
 	}
 
-	public String[] getParameters() {
-		return parameters;
+	public String getTargetPackageName() {
+		return targetPackageName;
+	}
+
+	public void setTargetPackageName(String targetPackageName) {
+		this.targetPackageName = targetPackageName;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getTarget() {
+		return target;
+	}
+
+	public void setTarget(String target) {
+		this.target = target;
 	}
 
 }

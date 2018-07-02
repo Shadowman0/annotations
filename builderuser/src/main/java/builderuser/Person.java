@@ -2,7 +2,7 @@ package builderuser;
 
 import example.domain.MyAnnotation;
 
-@MyAnnotation(parameters = { "" })
+@MyAnnotation(target = PersonNeu.class)
 // @GeneratePojoBuilder
 public class Person {
 	private String name;

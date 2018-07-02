@@ -17,6 +17,11 @@
 			<artifactId>auto-service</artifactId>
 			<version>${auto-service.version}</version>
 		</dependency>
+				<dependency>
+			<groupId>net.karneim</groupId>
+			<artifactId>pojobuilder</artifactId>
+			<version>4.2.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
@@ -36,7 +41,7 @@
 					<generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
 					<annotationProcessors>
 						<annotationProcessor>
-							example.domain.MyAnnotationProcessor
+							example.processor.MyAnnotationProcessor
 						</annotationProcessor>
 					</annotationProcessors>
 				</configuration>
