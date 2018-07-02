@@ -1,7 +1,8 @@
 package builderuser;
 
-import annotationTest.MyBuilder;
+import example.domain.MyAnnotation;
 
+@MyAnnotation(parameters = { "" })
 public class Person {
 	private String name;
 	private int alter;
@@ -10,7 +11,6 @@ public class Person {
 		return name;
 	}
 
-	@MyBuilder
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -19,7 +19,6 @@ public class Person {
 		return alter;
 	}
 
-	@MyBuilder
 	public void setAlter(int alter) {
 		this.alter = alter;
 	}

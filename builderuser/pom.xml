@@ -13,8 +13,8 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>annotationTest</groupId>
-			<artifactId>annotationTest</artifactId>
+			<groupId>myAnnotation</groupId>
+			<artifactId>myAnnotation</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
