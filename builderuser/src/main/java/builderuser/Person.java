@@ -1,10 +1,9 @@
 package builderuser;
 
 import example.domain.MyAnnotation;
-import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 @MyAnnotation(parameters = { "" })
-@GeneratePojoBuilder
+// @GeneratePojoBuilder
 public class Person {
 	private String name;
 	private int alter;
