@@ -12,10 +12,13 @@ import javax.annotation.processing.Filer;
 import javax.tools.JavaFileObject;
 
 import example.domain.AnnotatedClazz;
+import freemarker.core.ParseException;
 import freemarker.template.Configuration;
+import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import freemarker.template.TemplateNotFoundException;
 import freemarker.template.Version;
 
 public class SourceFileWritingService {
@@ -25,9 +28,6 @@ public class SourceFileWritingService {
 
 	public SourceFileWritingService(final Filer filer) {
 		this.filer = filer;
-	}
-
-	private void init() {
 		freemarkerCfg = new Configuration(new Version(2, 3, 20));
 		freemarkerCfg.setClassForTemplateLoading(this.getClass(), "/");
 		freemarkerCfg.setDefaultEncoding("UTF-8");
@@ -35,39 +35,32 @@ public class SourceFileWritingService {
 		freemarkerCfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 	}
 
-	public void createFiles(final List<AnnotatedClazz> annotatedClazzes) {
-		Objects.requireNonNull(annotatedClazzes);
-
-		if (freemarkerCfg == null) {
-			init();
-		}
-		Template template;
+	private void createFiles(final List<AnnotatedClazz> annotatedClazzes) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
 		String templateName = "templates/clazz.ftl";
-		try {
-			template = freemarkerCfg.getTemplate(templateName);
-		} catch (IOException e) {
-			Logger.error(e.getMessage());
-			throw new RuntimeException("Could not load template '" + templateName + "'", e);
-		}
-
+		Template template = freemarkerCfg.getTemplate(templateName);
 		for (AnnotatedClazz clazz : annotatedClazzes) {
-
 			Map<String, Object> modelMap = new HashMap<>();
 			modelMap.put("packageName", clazz.getPackageName());
 			modelMap.put("parentClazzName", clazz.getParentClazzName());
-
 			for (String parameters : clazz.getParameters()) {
 				modelMap.put("parameters", parameters);
 				modelMap.put("generatedClazzName", "TestClazz");
-				try {
-					JavaFileObject jfo = filer.createSourceFile(clazz.getPackageName() + "." + "TestClazz");
-					Writer writer = jfo.openWriter();
-					template.process(modelMap, writer);
-				} catch (IOException | TemplateException e) {
-					Logger.error(e.getMessage());
-				}
+				JavaFileObject jfo = filer.createSourceFile(clazz.getPackageName() + "." + "TestClazz");
+				Writer writer = jfo.openWriter();
+				template.process(modelMap, writer);
 			}
 		}
+	}
+
+	public void createFilesSafely(List<AnnotatedClazz> annotatedClazzes) {
+		Objects.requireNonNull(annotatedClazzes);
+		try {
+			createFiles(annotatedClazzes);
+		} catch (IOException | TemplateException e) {
+			Logger.error(e.getMessage());
+		}
+
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
@@ -21,9 +22,9 @@ import example.util.ElementParsingService;
 import example.util.Logger;
 import example.util.SourceFileWritingService;
 
-@SupportedAnnotationTypes("com.queomedia.generator.example.annotation.MyAnnotation")
+@SupportedAnnotationTypes("example.domain.MyAnnotation")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@AutoService(value = MyAnnotationProcessor.class)
+@AutoService(value = Processor.class)
 public class MyAnnotationProcessor extends AbstractProcessor {
 	private ElementParsingService elementParser;
 	private SourceFileWritingService sourceFileWriter;
@@ -45,7 +46,7 @@ public class MyAnnotationProcessor extends AbstractProcessor {
 			parsedClazzes.add(clazz);
 		}
 
-		this.sourceFileWriter.createFiles(parsedClazzes);
+		this.sourceFileWriter.createFilesSafely(parsedClazzes);
 		return false;
 	}
 }

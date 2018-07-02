@@ -1,9 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>myAnnotation</groupId>
-  <artifactId>myAnnotation</artifactId>
-  <version>1.0</version>
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>myAnnotation</groupId>
+	<artifactId>myAnnotation</artifactId>
+	<version>1.0</version>
+	<properties>
 		<auto-service.version>1.0-rc2</auto-service.version>
 		<maven-compiler-plugin.version>
 			3.5.1
@@ -32,33 +34,15 @@
 					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 					<generatedSourcesDirectory>${project.build.directory}
-						/generated-sources/</generatedSourcesDirectory>
+						/generated-sources</generatedSourcesDirectory>
 					<annotationProcessors>
 						<annotationProcessor>
-							annotationTest.MyAnnotationProcessor
+							example.domain.MyAnnotationProcessor
 						</annotationProcessor>
 					</annotationProcessors>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				    <version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/generated-sources/java/</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			
 
 		</plugins>
 	</build>
