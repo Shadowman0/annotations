@@ -1,6 +1,7 @@
 package ${packageName};
  
-import ${packageName}.${source};
+import ${sourcePackageName}.${source};
+import ${targetPackageName}.${target};
  
 public class ${generatedClazzName} {
  
