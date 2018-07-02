@@ -13,14 +13,17 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 
+import com.google.auto.service.AutoService;
+
 import example.domain.AnnotatedClazz;
 import example.domain.MyAnnotation;
 import example.util.ElementParsingService;
 import example.util.Logger;
 import example.util.SourceFileWritingService;
 
-@SupportedAnnotationTypes("com.queomedia.generator.example.annotation.GenerateInheriting")
+@SupportedAnnotationTypes("com.queomedia.generator.example.annotation.MyAnnotation")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
+@AutoService(value = MyAnnotationProcessor.class)
 public class MyAnnotationProcessor extends AbstractProcessor {
 	private ElementParsingService elementParser;
 	private SourceFileWritingService sourceFileWriter;

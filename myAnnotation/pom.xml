@@ -35,7 +35,7 @@
 						/generated-sources/</generatedSourcesDirectory>
 					<annotationProcessors>
 						<annotationProcessor>
-							annotationTest.BuilderProcessor
+							annotationTest.MyAnnotationProcessor
 						</annotationProcessor>
 					</annotationProcessors>
 				</configuration>
