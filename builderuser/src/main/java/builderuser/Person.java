@@ -5,15 +5,51 @@ import example.domain.MyAnnotation;
 @MyAnnotation(target = PersonNeu.class)
 // @GeneratePojoBuilder
 public class Person {
-	private String name;
+	private String vorname;
+	private String nachname;
+	private String strasse;
+	private String hausnummer;
+	private String lieblingsfarbe;
 	private int alter;
 
-	public String getName() {
-		return name;
+	public String getNachname() {
+		return nachname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
+	}
+
+	public String getStrasse() {
+		return strasse;
+	}
+
+	public void setStrasse(String strasse) {
+		this.strasse = strasse;
+	}
+
+	public String getHausnummer() {
+		return hausnummer;
+	}
+
+	public void setHausnummer(String hausnummer) {
+		this.hausnummer = hausnummer;
+	}
+
+	public String getLieblingsfarbe() {
+		return lieblingsfarbe;
+	}
+
+	public void setLieblingsfarbe(String lieblingsfarbe) {
+		this.lieblingsfarbe = lieblingsfarbe;
+	}
+
+	public String getVorname() {
+		return vorname;
+	}
+
+	public void setVorname(String name) {
+		this.vorname = name;
 	}
 
 	public int getAlter() {

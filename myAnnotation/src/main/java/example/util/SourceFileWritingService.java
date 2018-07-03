@@ -48,6 +48,8 @@ public class SourceFileWritingService {
 			modelMap.put("target", clazz.getTarget());
 			String generatedClazzName = clazz.getSource() + "To" + clazz.getTarget() + "Mapper";
 			modelMap.put("generatedClazzName", generatedClazzName);
+
+			modelMap.put("fields", clazz.getFields());
 			JavaFileObject jfo = filer.createSourceFile(clazz.getSourcePackageName() + "." + generatedClazzName);
 			Writer writer = jfo.openWriter();
 			template.process(modelMap, writer);

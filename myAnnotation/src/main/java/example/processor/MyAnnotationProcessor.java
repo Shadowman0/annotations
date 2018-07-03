@@ -45,17 +45,18 @@ public class MyAnnotationProcessor extends AbstractProcessor {
 	@Override
 	public boolean process(final Set<? extends TypeElement> annotations, final RoundEnvironment roundEnv) {
 		if (!roundEnv.processingOver()) {
+			note("[MyAnnotation] Started");
 			Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(MyAnnotation.class);
 			List<AnnotatedClazz> parsedClazzes = new ArrayList<>();
 			for (Element element : annotatedElements) {
 				AnnotatedClazz clazz = this.elementParser.createAnnotatedClazz(element);
-				note(element.getSimpleName() + "processed");
-				System.out.printf("\nScanning Type %s\n\n", element.getEnclosingElement());
+				note("[MyAnnotation] Processing " + element.getSimpleName());
 				parsedClazzes.add(clazz);
 			}
 
 			this.sourceFileWriter.createFilesSafely(parsedClazzes);
 		}
+		note("[MyAnnotation] Finished");
 		return false;
 	}
 }

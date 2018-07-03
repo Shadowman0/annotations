@@ -1,18 +1,22 @@
 package example.domain;
 
+import java.util.List;
+
 public class AnnotatedClazz {
 
 	private String sourcePackageName;
 	private String targetPackageName;
-
+	private List<Parameter> fields;
 	private String source;
 	private String target;
 
-	public AnnotatedClazz(String sourcePackageName, String targetPackageName, String source, String target) {
+	public AnnotatedClazz(String sourcePackageName, String targetPackageName, String source, String target,
+			List<Parameter> fields) {
 		this.sourcePackageName = sourcePackageName;
 		this.targetPackageName = targetPackageName;
 		this.source = source;
 		this.target = target;
+		this.fields = fields;
 	}
 
 	public String getSourcePackageName() {
@@ -45,6 +49,14 @@ public class AnnotatedClazz {
 
 	public void setTarget(String target) {
 		this.target = target;
+	}
+
+	public List<Parameter> getFields() {
+		return fields;
+	}
+
+	public void setFields(List<Parameter> fields) {
+		this.fields = fields;
 	}
 
 }

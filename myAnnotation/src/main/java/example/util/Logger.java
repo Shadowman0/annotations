@@ -15,10 +15,12 @@ public final class Logger {
 
 	public static void note(final String message) {
 		messager.printMessage(Diagnostic.Kind.NOTE, message);
+		// System.out.println(message);
 	}
 
 	public static void error(final String message) {
 		messager.printMessage(Diagnostic.Kind.ERROR, message);
+		// System.out.println(message);
 	}
 
 }

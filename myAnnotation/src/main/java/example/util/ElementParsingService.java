@@ -1,5 +1,7 @@
 package example.util;
 
+import java.util.ArrayList;
+
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.PackageElement;
@@ -10,6 +12,7 @@ import javax.lang.model.util.Types;
 
 import example.domain.AnnotatedClazz;
 import example.domain.MyAnnotation;
+import example.domain.Parameter;
 import net.karneim.pojobuilder.analysis.JavaModelAnalyzerUtil;
 
 public class ElementParsingService {
@@ -29,12 +32,17 @@ public class ElementParsingService {
 		TypeElement targetClass = extractTargetClass(annotation);
 		javaModelAnalyzerUtil.getClassname(targetClass);
 		javaModelAnalyzerUtil.getPackage(targetClass);
+		ArrayList<Parameter> fields = new ArrayList<>();
+		targetClass.getEnclosedElements().stream() //
+				.filter(this::isSetter)//
+				.forEach(e -> fields.add(new Parameter(String.class, e.getSimpleName().toString().substring(3))));
+
 		return new AnnotatedClazz(//
 				enclosingSourcePackage.getQualifiedName().toString(), //
 				javaModelAnalyzerUtil.getPackage(targetClass), //
 				javaModelAnalyzerUtil.getClassname(asTypeElement(clazz.asType())), //
-				javaModelAnalyzerUtil.getClassname(targetClass)//
-		);
+				javaModelAnalyzerUtil.getClassname(targetClass), //
+				fields);
 	}
 
 	@SuppressWarnings("unused")
@@ -44,8 +52,11 @@ public class ElementParsingService {
 		} catch (MirroredTypeException e) {
 			return asTypeElement(e.getTypeMirror());
 		}
-
 		return null;
+	}
+
+	private boolean isSetter(Element element) {
+		return element.getSimpleName().toString().startsWith("set");
 	}
 
 	private TypeElement asTypeElement(TypeMirror typeMirror) {
