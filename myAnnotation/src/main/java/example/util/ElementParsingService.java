@@ -28,7 +28,6 @@ public class ElementParsingService {
 
 	public AnnotatedClazz createAnnotatedClazz(final Element clazz) {
 		MyAnnotation annotation = clazz.getAnnotation(MyAnnotation.class);
-		PackageElement enclosingSourcePackage = (PackageElement) clazz.getEnclosingElement();
 		TypeElement targetClass = extractTargetClass(annotation);
 		javaModelAnalyzerUtil.getClassname(targetClass);
 		javaModelAnalyzerUtil.getPackage(targetClass);
@@ -38,7 +37,7 @@ public class ElementParsingService {
 				.forEach(e -> fields.add(new Parameter(String.class, e.getSimpleName().toString().substring(3))));
 
 		return new AnnotatedClazz(//
-				enclosingSourcePackage.getQualifiedName().toString(), //
+				((PackageElement) clazz.getEnclosingElement()).getQualifiedName().toString(), //
 				javaModelAnalyzerUtil.getPackage(targetClass), //
 				javaModelAnalyzerUtil.getClassname(asTypeElement(clazz.asType())), //
 				javaModelAnalyzerUtil.getClassname(targetClass), //
