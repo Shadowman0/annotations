@@ -1,1 +1,0 @@
-AnsprechpartnerDTO[id=00000000-0000-0000-0000-000000000001,personId=00000000-0000-0000-0000-000000000001,standortId=00000000-0000-0000-0000-000000000003,telefonnummer=+49 17532415,emailadresse=keine.ahnung@hotmail.com,position=Chef,abteilung=Nicht wichtig,vorgesetzterId=Optional.empty,lastModified=2002-02-02T01:02:03.123456]
