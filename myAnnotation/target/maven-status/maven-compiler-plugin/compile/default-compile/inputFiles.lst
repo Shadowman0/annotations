@@ -1,7 +1,7 @@
-C:\Users\Pieed\git\annotations\myAnnotation\src\main\java\example\util\SourceFileWritingService.java
-C:\Users\Pieed\git\annotations\myAnnotation\src\main\java\example\domain\MyAnnotation.java
-C:\Users\Pieed\git\annotations\myAnnotation\src\main\java\example\domain\Parameter.java
-C:\Users\Pieed\git\annotations\myAnnotation\src\main\java\example\util\Logger.java
-C:\Users\Pieed\git\annotations\myAnnotation\src\main\java\example\util\ElementParsingService.java
-C:\Users\Pieed\git\annotations\myAnnotation\src\main\java\example\processor\MyAnnotationProcessor.java
-C:\Users\Pieed\git\annotations\myAnnotation\src\main\java\example\domain\AnnotatedClazz.java
+U:\git\annotations\myAnnotation\src\main\java\example\util\Logger.java
+U:\git\annotations\myAnnotation\src\main\java\example\domain\Parameter.java
+U:\git\annotations\myAnnotation\src\main\java\example\processor\MyAnnotationProcessor.java
+U:\git\annotations\myAnnotation\src\main\java\example\util\ElementParsingService.java
+U:\git\annotations\myAnnotation\src\main\java\example\domain\AnnotatedClazz.java
+U:\git\annotations\myAnnotation\src\main\java\example\util\SourceFileWritingService.java
+U:\git\annotations\myAnnotation\src\main\java\example\domain\MyAnnotation.java

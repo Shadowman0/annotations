@@ -1,0 +1,16 @@
+{
+	"person":{
+		"anrede":1,
+		"titel":5,
+		"nachname":"Müller",
+		"vorname":"Hanna"
+	},
+	"ansprechpartner":{
+		"standortId":"00000000-0000-0000-0000-000000000001",
+		"telefonnummer":"0049 17532415",
+		"emailadresse":"hanna.mueller@hotmail.eu",
+		"position":"Tagträumer",
+		"abteilung":"Kaffeetisch",
+		"vorgesetzterId":"00000000-0000-0000-0000-000000000002"
+	}
+}
